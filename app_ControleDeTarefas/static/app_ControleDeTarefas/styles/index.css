@@ -1,0 +1,14 @@
+body{
+    background-image: url("../imagens/roxo.jpg");
+}
+
+h1{
+    margin-top: 20%;
+    text-align: center;
+    color: white;
+}
+
+form{
+    text-align: center;
+    color: white;
+}

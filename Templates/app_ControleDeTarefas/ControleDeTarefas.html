@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlador de tarefas</title>
+    <link rel="stylesheet" href="{% static 'app_ControleDeTarefas/styles/index.css' %}">
+</head>
+<body>
+  <div clss="container mt -5">
+    <h1 class="text-center">Controlador de tarefas</h1>
+    <p class="text-center">Gerencie suas tarefas!!</p>
+    <table class="'table mt -5">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Título</th>
+                <th scope="col">Descrição</th>
+                <th scope="col">Data de vencimento</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope ="row">1</th>
+                <td>Templates</td>
+                <td>Trabalhar com Templates no django</td>
+                <td>20/03/2026</td>
+                <td>Concluído</td>
+                <td> 
+                    <a class="btn btn-primary">Editar</a>
+                    <a class="btn btn-danger">Excluir</a>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+
+  </div>
+    
+</body>
+</html>                            

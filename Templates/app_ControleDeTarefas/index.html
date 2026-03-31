@@ -9,17 +9,20 @@
 
 </head>
 <body>
-    <h1>Cadastro</h1>
-    <img src="{% static 'app_ControleDeTarefas/imagens/roxo.jpg' %}">
-
-    <form method ="post">
+    <h1>Login</h1>
+   
+    <form method ="post" action="{% url 'tarefas' %}">
+        {% csrf_token %} 
+        
         <label for="nome"> Email: </label>
         <input type ="text" id="nome" name="nome" placeholder="Digite seu email: "><br></br>
 
         <label for="nome"> Senha: </label>
         <input type ="text" id="senha" name="senha" placeholder="Digite sua senha: "><br></br>
 
-        <button type="submit">Entrar</button>
+        
+        <button type="submit" >Entrar</button>
+             
 
     </form>
 </body>
