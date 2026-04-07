@@ -1,0 +1,24 @@
+body{
+    background-image: url("../imagens/roxo.jpg");
+}
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+P {
+    text-align: center;
+    color: #F375C2;
+}
+
+thead{
+    background-color: #4D2FB2;
+    color: white;
+}
+
+td{
+    background-color: white;
+    color: #4D2FB2;
+}
+

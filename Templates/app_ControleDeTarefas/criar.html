@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Tarefa</title>
+</head>
+<body>
+    <form method="post">
+
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="titulo" class="form-label">Título</label>
+            <input type="text" class="form-control" id="titulo" name="titulo" placeholder="Digite o título da tarefa">
+        </div>
+        <div class="mb-3">
+            <label for="descricao" class="form-label">Descrição</label>
+            <input type="text" class="form-control" id="descricao" name="descricao" placeholder="Digite a descrição da tarefa">
+        </div>
+        <div class="mb-3">
+            <label for="data" class="form-label"> Data </label>
+            <input type="date" class="form-control" id="data" name="data">
+        </div>
+        <button type="submit" class="btn btn-primary">Criar Tarefa</button>
+    </form>
+</body>
+</html>
