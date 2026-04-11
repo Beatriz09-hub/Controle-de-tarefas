@@ -17,3 +17,10 @@ def criar(request):
         Tarefa.objects.create(titulo=titulo, descricao=descricao, data=data, status=status)
         return redirect('tarefas')
     return render(request, 'app_ControleDeTarefas/criar.html')
+
+def excluir(request,id):
+    tarefa = Tarefa.objects.get(id=id)
+    if request.method == 'POST':
+        tarefa.delete()
+        return redirect('tarefas')
+    return render(request, 'app_ControleDeTarefas/excluir.html')
