@@ -14,10 +14,14 @@
 
 <body>
     <div clss="container mt-5">
-        <h1 class="text-center">Controlador de tarefas</h1>
+        <h1 class="text-center">Bem vindo, {{ request.user.username }} a suas tarefas!!</h1>
         <p class="text-center">Gerencie suas tarefas!!</p>
 
         <table class="table mt-5 d-flex justify-content-center">
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+                <button class="btn btn-danger">Sair</button>
+            </form>
 
             <tr>
                 <th scope="col">#</th>
@@ -42,7 +46,7 @@
             {% endfor %}
 
         </table>
-        <a class="btn btn-success" href="{% url 'criar' %}">Nova Tarefa</a>
+        <a class="btn btn-success" class="text-center" href="{% url 'criar' %}">Nova Tarefa</a>
 
     </div>
 

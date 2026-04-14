@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controlador de tarefas</title>
+    <link rel="stylesheet" href="{% static 'app_ControleDeTarefas/styles/index.css' %}">
+
+</head>
+<body>
+    <h1>Login</h1>
+   
+    <form class="login-form" method ="post" action="{% url 'login' %}">
+        {% csrf_token %} 
+        
+        <label for="nome"> Email: </label>
+        <input type ="text" id="nome" name="username" class="form-control" placeholder="Digite seu email: "><br></br>
+
+        <label for="senha"> Senha: </label>
+        <input type ="password" id="senha" name="password" class="form-control" placeholder="Digite sua senha: "><br></br>
+
+        
+        <button type="submit" >Entrar</button>
+             
+
+    </form>
+</body>
+</html>
