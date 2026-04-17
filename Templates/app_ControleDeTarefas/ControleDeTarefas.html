@@ -39,14 +39,17 @@
                 <td> {{ tarefa.data}} </td>
                 <td> {{ tarefa.status}} </td>
                 <td>
-                    <a class="btn btn-primary">Editar</a>
+                    <a class="btn btn-primary" href="{% url 'editar' tarefa.id %}">Editar</a>
                     <a class="btn btn-danger" href="{% url 'excluir' tarefa.id %}">Excluir</a>
                 </td>
             </tr>
             {% endfor %}
 
         </table>
-        <a class="btn btn-success" class="text-center" href="{% url 'criar' %}">Nova Tarefa</a>
+        
+        <div class="text-center">
+        <a class="btn btn-success btn-center" href="{% url 'criar' %}">Nova Tarefa</a>
+        </div>
 
     </div>
 

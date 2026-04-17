@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from app_ControleDeTarefas.forms import TarefaForm
 from app_ControleDeTarefas.models import Tarefa
 from django.contrib.auth.decorators import login_required
 
@@ -8,14 +9,12 @@ def tarefas(request):
     return render(request,'app_ControleDeTarefas/ControleDeTarefas.html', {'banco': banco })
 @login_required
 def criar(request):
+    form = TarefaForm(request.POST or None)
     if request.method == 'POST':
-        titulo = request.POST.get('titulo')
-        descricao = request.POST.get('descricao')
-        data = request.POST.get('data')
-        status = False
-        Tarefa.objects.create(titulo=titulo, descricao=descricao, data=data, status=status)
-        return redirect('tarefas')
-    return render(request, 'app_ControleDeTarefas/criar.html')
+         if form.is_valid():
+              form.save()
+              return redirect('tarefas')
+    return render(request, 'app_ControleDeTarefas/criar.html', {'form' : form})
 @login_required
 def excluir(request,id):
     tarefa = Tarefa.objects.get(id=id)
@@ -23,3 +22,15 @@ def excluir(request,id):
         tarefa.delete()
         return redirect('tarefas')
     return render(request, 'app_ControleDeTarefas/excluir.html')
+
+def editar(request, id):
+
+    tarefa = Tarefa.objects.get(id=id)
+    if request.method == 'POST':
+        tarefa.titulo = request.POST.get('titulo')
+        tarefa.descricao = request.POST.get('descricao')
+        tarefa.data = request.POST.get('data')
+        tarefa.status = request.POST.get('status') == 'on'
+        tarefa.save()
+        return redirect('tarefas')
+    return render(request, 'app_ControleDeTarefas/editar.html', {'tarefa': tarefa})
