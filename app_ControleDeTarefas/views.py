@@ -26,11 +26,9 @@ def excluir(request,id):
 def editar(request, id):
 
     tarefa = Tarefa.objects.get(id=id)
+    form = TarefaForm(request.POST or None, instance=tarefa)
     if request.method == 'POST':
-        tarefa.titulo = request.POST.get('titulo')
-        tarefa.descricao = request.POST.get('descricao')
-        tarefa.data = request.POST.get('data')
-        tarefa.status = request.POST.get('status') == 'on'
-        tarefa.save()
-        return redirect('tarefas')
-    return render(request, 'app_ControleDeTarefas/editar.html', {'tarefa': tarefa})
+        if form.is_valid():
+            form.save()
+            return redirect('tarefas')
+    return render(request, 'app_ControleDeTarefas/editar.html', {'form': form, 'tarefa': tarefa})

@@ -18,10 +18,13 @@
         <p class="text-center">Gerencie suas tarefas!!</p>
 
         <table class="table mt-5 d-flex justify-content-center">
+        
+            <div class="position-absolute top-0 end-0 m-3"> 
             <form method="POST" action="{% url 'logout' %}">
                 {% csrf_token %}
                 <button class="btn btn-danger">Sair</button>
             </form>
+        </div>
 
             <tr>
                 <th scope="col">#</th>

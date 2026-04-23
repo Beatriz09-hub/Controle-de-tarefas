@@ -6,7 +6,7 @@
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     </head>
     <body>
         
@@ -16,22 +16,8 @@
 
         {% csrf_token %}
         
-        <div class="mb-3">
-            <label for="titulo" class="form-label"> Editar título</label>
-            <input type="text" class="form-control" id="titulo" value="{{ tarefa.titulo }}" name="titulo" placeholder="Digite o título da tarefa">
-        </div>
-        <div class="mb-3">
-            <label for="descricao" class="form-label"> Editar descrição</label>
-            <input type="text" class="form-control" id="descricao" value="{{ tarefa.descricao }}" name="descricao" placeholder="Digite a descrição da tarefa">
-        </div>
-        <div class="mb-3">
-            <label for="date" class="form-label"> Editar data </label>
-            <input type="date" class="form-control" id="date" value="{{ tarefa.data }}" name="data">
-        </div>
-        <div class="mb-3">
-            <label for="checkbox" class="form-label"> Concluído </label>
-            <input type="checkbox" class="form-check-input" id="checkbox" name="status" {% if tarefa.status %}checked{% endif %}>
-        </div>
+        {{ form.as_p }}
+        
         <button type="submit" class="btn btn-primary" href="{% url 'tarefas' %}">Salvar</button>
       
     </form>
