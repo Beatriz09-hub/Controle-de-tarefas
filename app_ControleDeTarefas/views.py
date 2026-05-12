@@ -2,11 +2,13 @@ from django.shortcuts import  get_object_or_404, redirect, render
 from app_ControleDeTarefas.forms import TarefaForm
 from app_ControleDeTarefas.models import Tarefa
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import UserCreationForm
 
 @login_required 
 def tarefas(request):
     banco = Tarefa.objects.filter(usuario = request.user)
     return render(request,'app_ControleDeTarefas/ControleDeTarefas.html', {'banco': banco })
+
 @login_required
 def criar(request):
     form = TarefaForm(request.POST or None)
@@ -16,6 +18,7 @@ def criar(request):
         tarefa.save()      
         return redirect('tarefas')
     return render(request, 'app_ControleDeTarefas/criar.html', {'form' : form})
+
 @login_required
 def excluir(request,id):
     # tarefa = Tarefa.objects.get(id=id)
@@ -25,8 +28,8 @@ def excluir(request,id):
         return redirect('tarefas')
     return render(request, 'app_ControleDeTarefas/excluir.html')
 
+@login_required
 def editar(request, id):
-
     # tarefa = Tarefa.objects.get(id=id)
     tarefa = get_object_or_404(Tarefa, id=id, usuario = request.user)
     form = TarefaForm(request.POST or None, instance=tarefa)
@@ -35,3 +38,12 @@ def editar(request, id):
             form.save()
             return redirect('tarefas')
     return render(request, 'app_ControleDeTarefas/editar.html', {'form': form, 'tarefa': tarefa})
+
+def register_user(request):
+    form = UserCreationForm(request.POST or None)
+    if request.method == 'POST':
+        if form.is_valid():
+            form.save()
+            return redirect('login')
+        return render(request, 'registration/register.html', {'form' : form})
+    return render(request, 'registration/register.html')

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <title>Criar Conta</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1 class="text-center mt-5">Criar Conta</h1>
+        <form action="{% url 'register' %}" method="POST">
+            {% csrf_token %} 
+            <div class="mb-3">
+                <label for="username" class="form-label">Nome de Usuário</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+                {{form.username.errors}}
+            </div>
+            <div class="mb-3">
+                <label for="senha" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="senha" name="password1" required>
+                {{form.password1.errors}}
+
+            </div>
+            <div class="mb-3">
+                <label for="confirmar_senha" class="form-label">Confirmar Senha</label>
+                <input type="password" class="form-control" id="confirmar_senha" name="password2" required>
+                {{form.password2.errors}}
+                {{form.non_field_errors}}
+            </div>
+            <button class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+</body>
+</html>
