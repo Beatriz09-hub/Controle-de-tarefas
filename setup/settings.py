@@ -16,7 +16,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
 
 # Application definition
@@ -64,6 +64,17 @@ WSGI_APPLICATION = 'setup.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
+
+ #DATABASES = {
+   # 'default': {
+    #    'ENGINE': 'django.db.backends.mysql',
+     #   'NAME': 'taskdb',
+     #  'USER': 'root',
+     # 'PASSWORD': root',
+     #  'HOST': 'localhost',
+        #  'PORT': '3306',
+    #}
+#}
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
